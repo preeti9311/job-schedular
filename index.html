@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Scheduler Simulator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="main-container">
+
+  <!-- MODE SELECTION SECTION -->
+  <div class="form-container" id="mode-selection">
+    <div class="input-section">
+      <h2>Job Scheduler Setup</h2>
+
+      <div class="form-group">
+        <label for="mode">Select Mode:</label>
+        <select id="mode" onchange="updateAlgorithms()">
+          <option value="">--Select--</option>
+          <option value="preemptive">Preemptive</option>
+          <option value="non-preemptive">Non-Preemptive</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="algorithm">Select Algorithm:</label>
+        <select id="algorithm">
+          <option value="">--Select Mode First--</option>
+        </select>
+      </div>
+
+      <div class="form-group" id="quantum-section" style="display: none;">
+        <label for="quantum">Enter Time Quantum:</label>
+        <input type="number" id="quantum" min="1">
+      </div>
+
+      <div class="form-group">
+        <button class="proceed-btn" onclick="proceedToInput()">Proceed</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- PROCESS INPUT SECTION -->
+  <div class="form-container" id="process-input-section" style="display: none;">
+    <div class="input-section">
+      <h2>Enter Process Details</h2>
+      <table id="process-table">
+        <thead>
+          <tr>
+            <th>Priority</th>
+            <th>Process ID</th>
+            <th>Arrival Time (AT)</th>
+            <th>Burst Time (BT)</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="process-table-body">
+          <!-- Rows will be added dynamically -->
+        </tbody>
+      </table>
+
+      <div style="margin-top: 10px;">
+        <button class="proceed-btn" onclick="addProcessRow()">Add Process</button>
+        <button class="proceed-btn" onclick="submitProcesses()">Submit Processes</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="gantt-chart" id="gantt-chart">
+    <h2>Gantt Chart</h2>
+    <div class="gantt-container">
+      <!-- Gantt blocks will be injected here -->
+    </div>
+  </div>
+
+</div>
+
+
+<script src="script.js"></script>
+</body>
+</html>
+
